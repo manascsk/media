@@ -1,0 +1,256 @@
+   html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+body {
+  background: #fff;
+}
+i {
+  color: #fff;
+  font-size: 20px;
+}
+small {
+  color: #fff;
+}
+/************chat********/
+.chatpanel  {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 600px;
+  bottom: 0;
+  right: 0;
+  background-color: #000000;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.chatpanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  color: #fff;
+}
+
+.openbtn {
+  font-size: 15px;
+  cursor: pointer;
+  color: white;
+  border: none;
+}
+.openbtn:hover {
+  border: none;
+  background: none!important;
+}
+
+/************chat end********/
+/************user********/
+.userpanel  {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 600px;
+  bottom: 0;
+  right: 0;
+  background-color:#7d7fff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.userpanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  color: #000000;
+}
+
+.userbtn {
+  font-size: 15px;
+  cursor: pointer;
+  color: white;
+  border: none;
+}
+.userbtn:hover {
+  border: none;
+  background: none!important;
+}
+/************user end********/
+
+/************more********/
+.morepanel  {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 250px;
+  bottom: 70px;
+  right: 40px;
+  background-color:#000000;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 38px;
+}
+.morepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  font-size: 25px;
+  color: #fff;
+}
+.morepanel a {
+  padding: 0px 8px 3px 15px;
+  text-decoration: none;
+  font-size: 13px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.morepanel a:hover {
+  color: #f1f1f1;
+}
+.morebtn {
+  font-size: 15px;
+  cursor: pointer;
+  color: white;
+  border: none;
+}
+.morebtn:hover {
+  border: none;
+  background: none!important;
+}
+/************more end********/
+
+/************invite start********/
+.invitepanel h6 {
+  font-weight: bold;
+  font-size: 10px;
+  color: #025bcf;
+}
+.fa-user-friends {
+    color: #5E55E2;
+    background: #D8D6FF;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 14px
+}
+.invitepanel  {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 200px;
+  bottom: 250px;
+  right: 0;
+  background-color:#cccccc;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 8px;
+}
+.invitepanel .closebtn {
+  position: absolute;
+  top: -15px;
+  right: 0;
+  font-size: 36px;
+  color: #000000;
+}
+
+.invitebtn {
+  font-size: 15px;
+  cursor: pointer;
+  color: white;
+  border: none;
+}
+.invitebtn:hover {
+  border: none;
+  background: none!important;
+}
+/************invite end********/
+
+/************screen share start********/
+.screenSharepanel  {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 200px;
+  bottom: 250px;
+  right: 0;
+  background-color:#cccccc;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.screenSharepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  color: #000000;
+}
+
+.screenSharebtn {
+  font-size: 15px;
+  cursor: pointer;
+  color: white;
+  border: none;
+}
+.screenSharebtn:hover {
+  border: none;
+  background: none!important;
+}
+/************screen share end********/
+
+/************invite start********/
+.recordpanel  {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 200px;
+  bottom: 250px;
+  right: 0;
+  background-color:#cccccc;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.recordpanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  color: #000000;
+}
+
+.recordbtn {
+  font-size: 15px;
+  cursor: pointer;
+  color: white;
+  border: none;
+}
+.recordbtn:hover {
+  border: none;
+  background: none!important;
+}
+/************invite end********/
+
+@media only screen and (max-width: 767px) {
+  #sticky-footer1{
+    display: none;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1900px) {
+  #sticky-footer{
+    display: none;
+  }
+}
+
+.user-video{
+  height: auto !important;
+  width: 191px !important;
+  border-radius: 10px !important;
+  float: right;
+}

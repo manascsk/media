@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Addzet Media</title>
+   <link rel="stylesheet" href="{% static 'css/live.css' %}">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <script src="https://kit.fontawesome.com/497fc94b2e.js" crossorigin="anonymous"></script>
+</head>
+{% if room_name %}
+<body class="d-flex flex-column">
+   <div id="page-content">
+      <div class="container">
+         <div class="header">
+            <div class="float-left">
+               <img src="{% static 'img/addzet.png' %}" alt="addzet" style="height: 72px;width: 76px;">
+            </div>
+            <div class="float-right">
+               <button type="button" class="close" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+               <button type="button" class="close" aria-label="Mnimize">
+                  <span class="pr-3" aria-hidden="true">&minus;</span>
+               </button>
+               <button type="button" class="close" aria-label="Mximize">
+                  <span class="pr-3" aria-hidden="true">&square;</span>
+               </button>
+            </div>
+         </div>
+         <video id="local-video" class="user-video" autoplay playsinline></video>
+         <div id="video-container" style="height: 200px;">
+         </div>
+      </div>
+
+<div class="container" >
+   <div class="row">
+      <div class="col-lg-10">
+         <video></video>
+      </div>
+      <div class="col-lg-2">
+         <div class="row" style="max-height: 100%; overflow-y: scroll;">
+            
+         </div>
+      </div>
+   </div>
+</div>
+
+   </div>
+   <!-- **********Chat panel******* -->
+   <div id="myChatpanel" class="chatpanel">
+      <div class="container">
+         <div id="messages">
+            <ul id="message-list" class="list-group">
+               <!-- <li class="list-group-item">Hello</li> -->
+            </ul>
+         </div>
+         <input type="text" id="msg">
+         <button id="btn-send-msg" type="button">Send</button>
+      </div>
+      <a href="javascript:void(0)" class="closebtn" onclick="chatcloseNav()">×</a>
+   </div>
+   <!-- *********user panel******* -->
+   <div id="Userpanel" class="userpanel">
+      <li>Hii</li>
+      <a href="javascript:void(0)" class="closebtn" onclick="usercloseNav()">×</a>
+   </div>
+   <input type="hidden" value="{{csrf_token}}" id="csrf_token">
+   <!-- *********invite panel******* -->
+   <div id="Invitepanel" class="invitepanel">
+      <a href="javascript:void(0)" class="closebtn" onclick="invitecloseNav()">×</a>
+      <h6>Addzet Media</h6>
+      <div class="container">
+         <div class="title">
+            <i class="fas fa-user-friends"></i>
+            <h5 class="ml-2">Invite new members</h5>
+         </div>
+         <hr class="mx-4 my-2">
+         <div class="container mt-3">
+            <div class="float-left ml-5">
+               <i class="far fa-envelope" style="font-size: 38px; color: #025bcf;"></i>
+            </div>
+            <div class="float-right mr-5">
+               <i class="fas fa-id-badge" style="font-size: 38px; color: #025bcf;"></i>
+            </div>
+            <button type="button" class="btn btn-light mt-5 float-left">Invite</button>
+         </div>
+      </div>
+   </div>
+   <!-- *********Screen Share panel******* -->
+   <div id="ScreenSharepanel" class="screenSharepanel">
+      <a href="javascript:void(0)" class="closebtn" onclick="screenSharecloseNav()">×</a>
+   </div>
+   <!-- *********record panel******* -->
+   <div id="Recordpanel" class="recordpanel">
+      <a href="javascript:void(0)" class="closebtn" onclick="recordcloseNav()">×</a>
+   </div>
+   <!-- *********more panel******* -->
+   <div id="Morepanel" class="morepanel">
+      <a href="javascript:void(0)" class="closebtn" onclick="morecloseNav()">×</a>
+      <button class="invitebtn bg-transparent" onclick="inviteopenNav()"><a href="#">Invite</a></button>
+      <a href="#">Participants</a>
+      <button class="userbtn bg-transparent" onclick="useropenNav()"><a href="#">Users</a></button>
+      <button class="screenSharebtn bg-transparent" onclick="screenShareopenNav()"><a href="#">Share Screen
+            Option</a></button>
+      <button class="recordbtn bg-transparent" onclick="recordopenNav()"><a href="#"><a href="#">Record On This
+               Device</a></a>
+         <button class="openbtn bg-transparent" onclick="chatopenNav()"><a href="#">Chat</a></button>
+   </div>
+   <!--footer for web -->
+   <footer id="sticky-footer1" class="flex-shrink-0 py-3 bg-dark text-white-50">
+      <div class="container">
+         <div class="row">
+            <div class="col" id="btn-toggle-audio">
+               <i class="fas fa-headphones-alt pl-3"></i><br>
+               <small id="audio-status">Mute Audio</small>
+            </div>
+            <div class="col" id="btn-toggle-video">
+               <i class="fas fa-video pl-3"></i><br>
+               <small id="video-status">Stop Video</small>
+            </div>
+            <div class="col">
+               <button class="userbtn bg-dark" onclick="useropenNav()">
+                  <i class="fas fa-user"></i></button><br>
+               <small>Users</small>
+            </div>
+            <div class="col">
+               <i class="fas fa-record-vinyl pl-2"></i><br>
+               <small>Record</small>
+            </div>
+            <div class="col" id="btn-share-screen">
+               <i class="fas fa-share pl-4"></i><br>
+               <small id="screen-status">Share screen</small>
+            </div>
+            <div class="col">
+               <i class="fas fa-users pl-3"></i><br>
+               <small>Participants</small>
+            </div>
+            <div class="col" id="btn-record-screen">
+               <i class="fas fa-users pl-3"></i><br>
+               <small>Record</small>
+            </div>
+            <div class="col">
+               <i class="fas fa-hand-paper pl-3"></i><br>
+               <small>Raise Hand</small>
+            </div>
+            <div class="col">
+               <button class="openbtn bg-dark" onclick="chatopenNav()">
+                  <i class="fas fa-comment-alt"></i></button><br>
+               <small class="pl-1">Chat</small>
+            </div>
+            <div class="col">
+               <a href="/" class="btn bg-danger py-0 px-6">End</a>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!-- Footer For Mobile -->
+   <footer id="sticky-footer" class="flex-shrink-0 py-2 bg-dark text-white-50">
+      <div class="container">
+         <div class="row">
+            <div class="col" id="btn-toggle-audioM">
+               <i class="fas fa-headphones-alt pl-3"></i><br>
+               <small id="audio-statusM">Mute Audio</small>
+            </div>
+            <div class="col" id="btn-toggle-videoM">
+               <i class="fas fa-video pl-1" id="btn-toggle-video"></i><br>
+               <small id="video-statusM">Stop Video</small>
+            </div>
+            <div class="col">
+               <button class="morebtn bg-dark" onclick="moreopenNav()">
+                  <i class="fas fa-ellipsis-h "></i></button><br>
+               <small>More</small>
+            </div>
+            <div class="col text-right">
+               <a href="/" class="btn bg-danger py-0 px-6">End</a>
+            </div>
+         </div>
+      </div>
+   </footer>
+</body>
+<script>
+   function chatopenNav() {
+      document.getElementById("myChatpanel").style.width = "300px";
+   }
+
+   function chatcloseNav() {
+      document.getElementById("myChatpanel").style.width = "0";
+   }
+</script>
+<script>
+   function useropenNav() {
+      document.getElementById("Userpanel").style.width = "300px";
+   }
+
+   function usercloseNav() {
+      document.getElementById("Userpanel").style.width = "0";
+   }
+</script>
+<script>
+   function moreopenNav() {
+      document.getElementById("Morepanel").style.width = "200px";
+   }
+
+   function morecloseNav() {
+      document.getElementById("Morepanel").style.width = "0";
+   }
+</script>
+<script>
+   function inviteopenNav() {
+      document.getElementById("Invitepanel").style.width = "360px";
+   }
+
+   function invitecloseNav() {
+      document.getElementById("Invitepanel").style.width = "0";
+   }
+</script>
+<script>
+   function screenShareopenNav() {
+      document.getElementById("ScreenSharepanel").style.width = "370px";
+   }
+
+   function screenSharecloseNav() {
+      document.getElementById("ScreenSharepanel").style.width = "0";
+   }
+</script>
+<script>
+   function recordopenNav() {
+      document.getElementById("Recordpanel").style.width = "370px";
+   }
+
+   function recordcloseNav() {
+      document.getElementById("Recordpanel").style.width = "0";
+   }
+</script>
+<script>
+   var numbTurnCredential = '{{numb_turn_credential}}';
+   var numbTurnUsername = '{{numb_turn_username}}';
+   var numbTurnUrl = '{{numb_turn_url}}';
+   var username = '{{username}}';
+   var user_id = '{{user_id}}';
+   var full_name = '{{full_name}}';
+</script>
+<script type="text/javascript" src="{% static 'js/peer.js' %}"></script>
+<script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+{% else %}
+<p>Invalid Meeting ID</p>
+{% endif %}
+
+</html>

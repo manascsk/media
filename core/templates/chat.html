@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+</head>
+
+<body onload="youtor()">
+    <!-- header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" onclick="manas()">
+        <img src="{% static 'img/addzet.png' %}">
+        <!-- <div class="form-inline my-2 my-lg-0">
+                <button type="button" class="close" aria-label="Mnimize">
+                <span class="pr-3" aria-hidden="true">&minus;</span>
+                </button>
+                <button type="button" class="close" aria-label="Mximize">
+                <span class="pr-3" aria-hidden="true">&square;</span>
+                </button>
+                <button type="button" class="close" aria-label="Close">
+                <span  aria-hidden="true">&times;</span>
+                </button>
+            </div> -->
+        </div>
+    </nav>
+    <!-- body -->
+
+
+    <div class="container main" id="youtor-main">
+        <div class="row">
+            <div class="col col-md-12" id="main-screen-box">
+            </div>
+            <video id="local-video" autoplay playsinline class="window default-video" draggable="true"></video>
+        </div>
+
+    </div>
+    <div class="container main" id="youtor-video" style="display: none;">
+        <div class="row">
+            <div class="col col-md-12" id="host-screen-box">
+            </div>
+        </div>
+    </div>
+    <div class="container main" style="display: none;" id="host-view">
+        <div class="row">
+            <div class="col-lg-10 col-8" id="host-local-video">
+            </div>
+            <div class="col-lg-10 col-8" id="user-share-screen-video">
+            </div>
+            <div class="col-lg-2 col-4">
+                <div class="col-lg-12" id="mmm" style="display: none; height: 85px;"></div>
+                <div class="col-lg-12" style=" height: 50vh; overflow-x: hidden; overflow-y: auto;">
+                    <div class="row" id="user-video">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- **********Chat panel******* -->
+    <div id="myChatpanel" class="chatpanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="chatcloseNav()">×</a>
+        <div class="page-content page-container" id="page-content">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-md-12">
+                    <div class="card card-bordered">
+                        <div class="card-header">
+                            <h4 class="card-title"><strong>Chat</strong></h4>
+                        </div>
+                        <div class="ps-container ps-theme-default ps-active-y" id="chat-content">
+                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                            </div>
+                            <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+                            </div>
+                        </div>
+                        <div class="publisher bt-1 border-light">
+                            <img class="avatar avatar-xs" src="{% static 'img/avtaar.png' %}">
+                            <input class="publisher-input" type="text" placeholder="Write something" id="msg">
+                            <a class="publisher-btn text-info" data-abc="true" id="btn-send-msg">
+                                <i class="fa fa-paper-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- *********participants panel******* -->
+    <!-- *********host participants panel******* -->
+    <div id="Participantspanel" class="participantspanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="participantscloseNav()">×</a>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="articles card">
+                    <div class="card-header d-flex align-items-center">
+                        <h6 class="h6">Participants</h6>
+                    </div>
+                    <div class="card-body no-padding">
+                        <!-- <div class="item d-flex align-items-center">
+                <div class="image"><img src="avtaar.png" alt="..." class="img-fluid rounded-circle"></div>
+                <div class="text"><a href="#">
+                    <h3 class="h5">Chittaranjan Das</h3></a></div>
+              </div> -->
+                        <div class="col col-md-12" id="video-container">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
+        <div class="container">
+            <div class="row">
+                <div class="col" id="btn-toggle-audio">
+
+                    <div class="col-lg-12" id="audio-mute" style="display:none; text-align: center;">
+                        <i class="fas fa-headphones-alt"></i><br>
+                        <small>Unmute Audio</small>
+                    </div>
+
+                    <div class="col-lg-12" id="audio-unmute" style="text-align: center;">
+                        <i class="fas fa-microphone-slash"></i><br>
+                        <small>Mute Audio</small>
+                    </div>
+                    <!-- 
+                    <i class="fas fa-headphones-alt" id="audio-slash-icon" style="visibility: hidden;"></i>
+                    <i class="fas fa-microphone-slash" id="audio-icon"></i>
+                    <br>
+                    <small id="audio-slash-msg">Mute Audio</small>
+                    <small id="audio-msg" style="visibility: hidden;">Unmute Audio</small> -->
+                </div>
+                <div class="col" id="btn-toggle-video">
+
+                    <div class="col-lg-12" id="video-mute" style="display:none; text-align: center;">
+                        <i class="fas fa-video"></i><br>
+                        <small id="video-msg">Start Video</small>
+                    </div>
+
+                    <div class="col-lg-12" id="video-unmute" style="text-align: center;">
+                        <i class="fas fa-video-slash"></i><br>
+                        <small id="video-slash-msg">Stop Video</small>
+                    </div>
+
+                    <!-- <i class="fas fa-video" id="video-slash-icon" style="visibility: hidden;"></i>
+                    <i class="fas fa-video-slash" id="video-icon"></i>
+                    <br>
+                    <small id="video-slash-msg">Stop Video</small>
+                    <small id="video-msg" style="visibility: hidden;">Start Video</small> -->
+                </div>
+                <div class="col" id="btn-record-screen" style="text-align: center; color: white;">
+                    <i class="fas fa-dot-circle"></i><br>
+                    <small>Record</small>
+                </div>
+                <!-- <div class="col" id="btn-record-screen">
+                    <i class="fas fa-dot-circle"></i><br>
+                    <small>Record</small>
+                </div> -->
+                <div class="col" id="btn-share-screen" style="text-align: center; color: white;">
+                    <i class="fas fa-share"></i><br>
+                    <small>Share screen</small>
+                </div>
+
+                <!-- <div class="col" id="btn-share-screen">
+                    <i class="fas fa-share"></i><br>
+                    <small>Share screen</small>
+                </div>
+                 -->
+                <div class="col" style="text-align: center;">
+                    <button class="participantsbtn bg-dark" onclick="participantsopenNav()">
+                        <i class="fas fa-users"></i></button><br>
+                    <small>Participants</small>
+                </div>
+
+                <!-- <div class="col">
+                    <button class="participantsbtn bg-dark" onclick="participantsopenNav()">
+                        <i class="fas fa-users"></i></button><br>
+                    <small>Participants</small>
+                </div> -->
+
+                <div class="col" style="text-align: center;">
+                    <button class="openbtn bg-dark" onclick="chatopenNav()">
+                        <i class="fas fa-comment-alt"></i></button><br>
+                    <small class="pl-1">Chat</small>
+                </div>
+
+                <!-- <div class="col">
+                    <button class="openbtn bg-dark" onclick="chatopenNav()">
+                        <i class="fas fa-comment-alt"></i></button><br>
+                    <small class="pl-1">Chat</small>
+                </div>
+                 -->
+                <div class="col" style="text-align: center;">
+                    <button type="button" class="btn bg-danger py-0 px-6 text-white" >End</button>
+                </div>
+
+                <!-- <div class="col">
+                    <button type="button" class="btn bg-danger py-0 px-6 text-white">End</button>
+                </div> -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer -->
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script src="{% static 'js/main2.js' %}"></script>
+<script src="{% static 'js/peer.js' %}"></script>
+<script>
+    var username = '{{username}}';
+    var user_id = '{{user_id}}';
+    var full_name = '{{full_name}}';
+    var host = false;
+    var host_name = '{{host_name}}';
+    if ('{{host}}' == 'True') {
+        host = true
+    }
+</script>
+
+</html>
